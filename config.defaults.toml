@@ -2,9 +2,9 @@
 [app]
 # 应用访问地址（用于生成文件链接）
 app_url = ""
-# 后台管理密码
+# 后台管理密码（⚠️ 警告：部署前请务必修改此默认密码！）
 app_key = "grok2api"
-# API 调用密钥（可选）
+# API 调用密钥（可选，建议在生产环境中设置以保护 API）
 api_key = ""
 # 是否启用 public 功能玩法
 public_enabled = false
