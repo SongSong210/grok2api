@@ -1,0 +1,18 @@
+<nav class="bg-[var(--bg)]/80 backdrop-blur-md fixed top-0 left-0 right-0 z-10">
+  <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-2">
+        <span class="brand-link font-semibold tracking-tight text-lg">Grok2API Ultimate</span>
+      </div>
+      <div class="h-4 w-px bg-[var(--border)]"></div>
+      <a href="/chat" class="nav-link text-sm" data-nav="/chat">💬 Chat 聊天</a>
+      <a href="/imagine" class="nav-link text-sm" data-nav="/imagine">🎨 Imagine 瀑布流</a>
+      <a href="/video" class="nav-link text-sm" data-nav="/video">🎬 Video 视频生成</a>
+      <a href="/voice" class="nav-link text-sm" data-nav="/voice">🎙️ LiveKit 陪聊</a>
+    </div>
+    <div class="nav-actions">
+      <a href="/admin/login" class="nav-action-btn">管理后台</a>
+      <button id="public-logout-btn" onclick="publicLogout()" type="button" class="nav-action-btn">退出</button>
+    </div>
+  </div>
+</nav>
