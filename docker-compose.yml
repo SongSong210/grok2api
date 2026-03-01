@@ -1,7 +1,9 @@
 services:
   grok2api:
     container_name: grok2api
-    image: ghcr.io/chenyme/grok2api:latest
+    build: .
+    # 如果使用预构建镜像，注释掉 build 并取消下行注释：
+    # image: ghcr.io/songsong210/grok2api:latest
     ports:
       - "8000:8000"
     environment:

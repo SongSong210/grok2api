@@ -129,10 +129,16 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
 
-    # CORS 配置
+    # CORS 配置（生产环境建议通过 CORS_ORIGINS 环境变量限制允许的来源）
+    cors_origins_str = os.getenv("CORS_ORIGINS", "*")
+    if cors_origins_str == "*":
+        allow_origins = ["*"]
+    else:
+        allow_origins = [origin.strip() for origin in cors_origins_str.split(",")]
+
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],
+        allow_origins=allow_origins,
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
