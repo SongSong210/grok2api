@@ -37,7 +37,7 @@ class RequestLogger:
         """从配置读取日志上限"""
         from app.core.config import get_config
 
-        return get_config("max_log_entries
+        return get_config("max_log_entries", 500)
 
     async def init(self):
         """初始化"""
