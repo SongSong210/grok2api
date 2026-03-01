@@ -1,3 +1,5 @@
+# NOTE: This module is superseded by chat_full.py which is the active enhanced chat router.
+# This file is kept for reference but its router is NOT registered in main.py.
 """
 Enhanced Chat API with Real Context Management
 整合 Tomiya233/grok2api_new 的真实上下文功能

@@ -9,6 +9,9 @@ from typing import Dict
 from app.core.logger import logger
 
 
+_DEFAULT_USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"
+
+
 def _random_string(length: int, letters_only: bool = True) -> str:
     """生成随机字符串"""
     chars = string.ascii_lowercase if letters_only else string.ascii_lowercase + string.digits
@@ -44,6 +47,12 @@ def get_dynamic_headers(pathname: str = "/rest/app-chat/conversations/new") -> D
     # 生成动态 statsig-id
     statsig_id = _generate_statsig_id()
 
+    try:
+        from app.core.config import get_config
+        user_agent = get_config("proxy.user_agent", _DEFAULT_USER_AGENT)
+    except Exception:
+        user_agent = _DEFAULT_USER_AGENT
+
     # 构建请求头
     headers = {
         "Accept": "*/*",
@@ -52,10 +61,10 @@ def get_dynamic_headers(pathname: str = "/rest/app-chat/conversations/new") -> D
         "Connection": "keep-alive",
         "Origin": "https://grok.com",
         "Priority": "u=1, i",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
-        "Sec-Ch-Ua": '"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"',
+        "User-Agent": user_agent,
+        "Sec-Ch-Ua": '"Not(A:Brand";v="99", "Google Chrome";v="136", "Chromium";v="136"',
         "Sec-Ch-Ua-Mobile": "?0",
-        "Sec-Ch-Ua-Platform": '"Windows"',
+        "Sec-Ch-Ua-Platform": '"macOS"',
         "Sec-Fetch-Dest": "empty",
         "Sec-Fetch-Mode": "cors",
         "Sec-Fetch-Site": "same-origin",

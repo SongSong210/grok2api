@@ -1,3 +1,5 @@
+# NOTE: This module is a legacy integration from Tomiya233/grok2api_new and is NOT registered in main.py.
+# The main chat router is app.api.v1.chat or app.api.v1.chat_full.
 """聊天 API 路由"""
 
 import time
@@ -18,10 +20,24 @@ from app.models.openai_models import (
     ResponseResponse,
 )
 from app.services.grok_client import GrokClient
+# api_key_manager was removed; use a stub so this legacy module can be parsed safely
 # from app.services.api_keys import api_key_manager
 # from app.services.request_stats import request_stats
 # from app.services.request_logger import request_logger
 from app.core.logger import logger
+
+
+class _StubKeyManager:
+    keys = []
+
+    def validate_key(self, key):
+        return None
+
+    async def record_usage(self, key):
+        pass
+
+
+api_key_manager = _StubKeyManager()
 
 router = APIRouter()
 
