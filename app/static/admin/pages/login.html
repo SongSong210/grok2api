@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - Grok2API Ultimate</title>
+    <link rel="icon" href="/static/common/img/favicon/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { 
+            theme: { 
+                extend: { 
+                    colors: { 
+                        border: "hsl(0 0% 89%)", 
+                        input: "hsl(0 0% 89%)", 
+                        ring: "hsl(0 0% 3.9%)", 
+                        background: "hsl(0 0% 100%)", 
+                        foreground: "hsl(0 0% 3.9%)", 
+                        primary: { 
+                            DEFAULT: "hsl(0 0% 9%)", 
+                            foreground: "hsl(0 0% 98%)" 
+                        }, 
+                        secondary: { 
+                            DEFAULT: "hsl(0 0% 96.1%)", 
+                            foreground: "hsl(0 0% 9%)" 
+                        }, 
+                        muted: { 
+                            DEFAULT: "hsl(0 0% 96.1%)", 
+                            foreground: "hsl(0 0% 45.1%)" 
+                        } 
+                    } 
+                } 
+            } 
+        }
+    </script>
+    <style>
+        @keyframes slide-up {
+            from { transform: translateY(100%); opacity: 0 }
+            to { transform: translateY(0); opacity: 1 }
+        }
+        .animate-slide-up { animation: slide-up .3s ease-out }
+    </style>
+</head>
+
+<body class="h-full bg-background text-foreground antialiased">
+    <div class="flex min-h-full flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold">Grok2API Ultimate</h1>
+                <p class="mt-2 text-sm text-muted-foreground">管理控制台</p>
+            </div>
+        </div>
+
+        <div class="sm:mx-auto sm:w-full sm:max-w-md mt-8">
+            <div class="bg-background py-8 px-4 sm:px-10 rounded-lg border border-border">
+                <form id="loginForm" class="space-y-6">
+                    <div class="space-y-2">
+                        <label for="api-key-input" class="text-sm font-medium">管理密码</label>
+                        <input type="password" id="api-key-input" name="password" required
+                            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                            placeholder="请输入后台密码">
+                    </div>
+                    <button type="button" onclick="login()"
+                        class="inline-flex items-center justify-center rounded-md font-medium transition-colors bg-primary text-primary-foreground hover:bg-primary/90 h-10 w-full disabled:opacity-50">
+                        登录
+                    </button>
+                </form>
+
+                <div class="mt-6 text-center text-xs text-muted-foreground">
+                    <p>Grok2API Ultimate Edition © 2026</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/common/js/admin-auth.js?v=1.5.0"></script>
+    <script src="/static/common/js/toast.js"></script>
+    <script src="/static/admin/js/login.js?v=1.5.0"></script>
+</body>
+
+</html>
